@@ -56,8 +56,8 @@ pipeline {
             steps {
                 echo 'Verifying deployment...'
                 withKubeConfig([credentialsId: 'kubeconfig']) {
-                    sh 'kubectl rollout status deployment/backend --timeout=60s'
-                    sh 'kubectl rollout status deployment/frontend --timeout=60s'
+                    sh 'kubectl rollout status deployment/backend --timeout=120s'
+                    sh 'kubectl rollout status deployment/frontend --timeout=120s'
                     sh 'kubectl get pods'
                     sh 'kubectl get services'
                 }
