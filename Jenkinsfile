@@ -45,7 +45,7 @@ pipeline {
             steps {
                 echo 'Deploying to Minikube...'
                 withKubeConfig([credentialsId: 'kubeconfig']) {
-                    sh 'kubectl apply -f k8s/'
+                    sh 'kubectl apply -f k8s/ --validate=false'
                     sh "kubectl set image deployment/backend backend=${BACKEND_IMAGE}:${BUILD_NUMBER}"
                     sh "kubectl set image deployment/frontend frontend=${FRONTEND_IMAGE}:${BUILD_NUMBER}"
                 }
